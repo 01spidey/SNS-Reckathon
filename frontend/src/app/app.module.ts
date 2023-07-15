@@ -14,11 +14,13 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { NgxOtpInputModule } from 'ngx-otp-input';
 import { HomeComponent } from './home/home.component';
+import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    StudentDashboardComponent
   ],
   imports: [
     BrowserModule,
