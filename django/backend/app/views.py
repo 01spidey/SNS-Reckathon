@@ -44,11 +44,14 @@ def register(request):
             category=formdata['category']
             company = formdata['company']
             
-            if(Company.objects.filter(username = username).exists):
+            print(formdata)
+            if(len(Company.objects.filter(username = username))>0):
+                print(Company.objects.get(username = username).username)
                 data = {
                     'success' : False,
                     'message' : 'Username Already Exists!!'
                 }
+                return JsonResponse(data)
                 
             else:
                 company = Company.objects.create(
@@ -65,6 +68,7 @@ def register(request):
                     'success' : True,
                     'message' : 'Registration Successfull!!'
                 }
+                return JsonResponse(data)
         
         else:
             username = formdata['username']
@@ -76,12 +80,14 @@ def register(request):
             batch = formdata['batch']
             degree = formdata['degree']
             stream = formdata['stream']
+            name = formdata['name']
             
-            if(Student.objects.filter(username = username).exists):
+            if(len(Student.objects.filter(username = username))>0):
                 data = {
                     'success' : False,
                     'message' : 'Username Already Exists!!'
                 }
+                return JsonResponse(data)
                 
             else:
             
@@ -94,7 +100,8 @@ def register(request):
                     cgpa = cgpa,
                     batch = batch,
                     degree = degree,
-                    stream = stream
+                    stream = stream,
+                    name = name
                 )
                 
                 student.save()
@@ -104,7 +111,7 @@ def register(request):
                     'message' : 'Registration Successfull!!'
                 }
         
-            return JsonResponse(data)
+                return JsonResponse(data)
     
     except Exception as e:
         print(e)
@@ -190,7 +197,21 @@ def publish_job(request):
         }
     
     return JsonResponse(data)
-        
+
+@csrf_exempt
+def apply_job(request):
+    pass
+
+@csrf_exempt
+def save_job(request):
+    pass
+
+@csrf_exempt
+def view_applicants(request):
+    pass
+
+def change_status(request):
+    pass
 
 @csrf_exempt
 def get_jobs(request):
