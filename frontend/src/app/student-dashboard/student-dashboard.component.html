@@ -22,24 +22,24 @@
             </div>
             <ul class="side-nav">
                 <span class="side-nav__header">Main Menu</span>
-                <li class="side-nav__item side-nav__item-active">
+                <li class="side-nav__item" [ngClass] = "{'side-nav__item-active' : section==='All Jobs', 'side-nav__item-inactive' : section!=='All Jobs'}" (click)="section='All Jobs'">
                     <svg width="22" height="23" viewBox="0 0 22 23" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9.23201 3.4202L9.23239 3.41989C10.2108 2.63408 11.7843 2.63834 12.7781 3.42994C12.7783 3.43005 12.7784 3.43015 12.7785 3.43025L18.7784 8.2301C18.7789 8.23054 18.7795 8.23099 18.78 8.23143C19.1189 8.50835 19.4146 8.94381 19.6058 9.44415C19.7968 9.94409 19.8672 10.4662 19.8014 10.8985L18.6475 17.8037C18.6474 17.8042 18.6473 17.8047 18.6472 17.8052C18.4217 19.0989 17.1608 20.1667 15.8585 20.1667H6.1418C4.81982 20.1667 3.58766 19.1252 3.36227 17.8148C3.36221 17.8145 3.36215 17.8142 3.36209 17.8138L2.20746 10.9043L2.20726 10.9032C2.13345 10.4677 2.19947 9.94466 2.39002 9.44498C2.58055 8.94535 2.87982 8.51038 3.22697 8.2334L3.22784 8.2327L9.23201 3.4202ZM11.0001 18.1876C11.6521 18.1876 12.1876 17.652 12.1876 17.0001V14.2501C12.1876 13.5981 11.6521 13.0626 11.0001 13.0626C10.3482 13.0626 9.81263 13.5981 9.81263 14.2501V17.0001C9.81263 17.652 10.3482 18.1876 11.0001 18.1876Z" fill="currentColor" stroke="currentColor"/>
                     </svg>                       
                     <span>Jobs</span>
                 </li>
 
-                <li class="side-nav__item">
+                <li class="side-nav__item" [ngClass] = "{'side-nav__item-active' : section==='My Jobs', 'side-nav__item-inactive' : section!=='My Jobs'}" (click)="section='My Jobs'">
                     <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.1668 9.66671V14.25C20.1668 18.8334 18.3335 20.6667 13.7502 20.6667H8.25016C3.66683 20.6667 1.8335 18.8334 1.8335 14.25V8.75004C1.8335 4.16671 3.66683 2.33337 8.25016 2.33337H12.8335" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M20.1668 9.66671H16.5002C13.7502 9.66671 12.8335 8.75004 12.8335 6.00004V2.33337L20.1668 9.66671Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M6.4165 12.4166H11.9165" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M6.4165 16.0834H10.0832" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>                        
-                    <span>Saved jobs</span>
+                    <span>My  jobs</span>
                 </li>
-
-                <li class="side-nav__item">
+<!-- 
+                <li class="side-nav__item" [ngClass] = "{'side-nav__item-active' : section==='Applied Jobs', 'side-nav__item-inactive' : section!=='Applied Jobs'}" (click)="section='Applied Jobs'">
                     <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M20.1668 9.66671V14.25C20.1668 18.8334 18.3335 20.6667 13.7502 20.6667H8.25016C3.66683 20.6667 1.8335 18.8334 1.8335 14.25V8.75004C1.8335 4.16671 3.66683 2.33337 8.25016 2.33337H12.8335" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M20.1668 9.66671H16.5002C13.7502 9.66671 12.8335 8.75004 12.8335 6.00004V2.33337L20.1668 9.66671Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -48,8 +48,18 @@
                     </svg>                        
                     <span>Applied jobs</span>
                 </li>
+
+                <li class="side-nav__item" [ngClass] = "{'side-nav__item-active' : section==='Applied Jobs', 'side-nav__item-inactive' : section!=='Applied Jobs'}" (click)="section='Applied Jobs'">
+                    <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.1668 9.66671V14.25C20.1668 18.8334 18.3335 20.6667 13.7502 20.6667H8.25016C3.66683 20.6667 1.8335 18.8334 1.8335 14.25V8.75004C1.8335 4.16671 3.66683 2.33337 8.25016 2.33337H12.8335" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M20.1668 9.66671H16.5002C13.7502 9.66671 12.8335 8.75004 12.8335 6.00004V2.33337L20.1668 9.66671Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.4165 12.4166H11.9165" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M6.4165 16.0834H10.0832" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>                        
+                    <span>Ongoing jobs</span>
+                </li> -->
                 
-                <li class="side-nav__item">
+                <li class="side-nav__item" [ngClass] = "{'side-nav__item-active' : section==='Payments', 'side-nav__item-inactive' : section!=='Payments'}" (click)="section='Payments'">
                     <svg width="22" height="23" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.2915 12.6367V11.0509C2.2915 9.15336 3.84067 7.60419 5.73817 7.60419H16.2615C18.159 7.60419 19.7082 9.15336 19.7082 11.0509V12.3709H17.8565C17.3432 12.3709 16.8757 12.5725 16.5365 12.9208C16.1515 13.2967 15.9315 13.8375 15.9865 14.415C16.069 15.405 16.9765 16.1292 17.9665 16.1292H19.7082V17.22C19.7082 19.1175 18.159 20.6667 16.2615 20.6667H11.2382" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M2.2915 11.8758V7.6867C2.2915 6.59587 2.96067 5.62416 3.97817 5.23916L11.2565 2.48916C12.3932 2.05833 13.6123 2.90169 13.6123 4.12085V7.60418" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -135,16 +145,175 @@
             </div>
         </div>
 
+        <div class="section-title">
+            <!-- <h1 *ngIf="section==='All Jobs'">All Jobs</h1>
+            <h1 *ngIf="section==='Saved Jobs'">Saved Jobs</h1>
+            <h1 *ngIf="section==='Applied Jobs'">Applied Jobs</h1> -->
+            <h1>{{section}}</h1>
+        </div>
+
+        <div class="filter-container" *ngIf = "section==='All Jobs'">
+            <div class="status-filter" style="margin-top: 15px;">
+                    
+                <div class="status" [ngClass]="{'active-chip-orange' : job_type_filter=='All', 'not-active-chip':job_type_filter!='All'}" (click)="changeFilter('All', job_category_filter)">
+                    <span class="material-symbols-outlined">
+                        done_all
+                    </span>
+                    <p>All</p>
+                </div>
+            
+    
+                <div class="status" [ngClass]="{'active-chip-orange' : job_type_filter=='Job', 'not-active-chip':job_type_filter!='Job'}" (click)="changeFilter( 'Job', job_category_filter)">
+                    <span class="material-symbols-outlined">
+                        work
+                    </span>
+                    <p>Job</p>
+                </div>
+    
+                <div class="status" [ngClass]="{'active-chip-orange' : job_type_filter=='Internship', 'not-active-chip':job_type_filter!='Internship'}" (click)="changeFilter('Internship', job_category_filter )">
+                    <span class="material-symbols-outlined">
+                        handyman
+                    </span>
+                    <p>Internship</p>
+                </div>
+
+                <div class="status" [ngClass]="{'active-chip-orange' : job_type_filter=='Freelance', 'not-active-chip':job_type_filter!='Freelance'}" (click)="changeFilter('Freelance', job_category_filter)">
+                    <span class="material-symbols-outlined">
+                        handyman
+                    </span>
+                    <p>Freelance</p>
+                </div>
+            
+            </div>
+
+            <div class="status-filter" style="margin-top: 15px;background-color:#1a6486;">
+                    
+                <div class="status">
+                    <span class="material-symbols-outlined" style="color: white;">
+                        communities
+                    </span>
+                    <select name="" id="" [ngModel]="job_category_filter">
+                        <option value="All">All</option>
+                        <option value="IT - Product">IT - Product</option>
+                        <option value="IT - Service">IT - Service</option>
+                        <option value="Core">Core</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Others">Others</option>
+                    </select>
+                </div>
+            
+            </div>
+        </div>
+
+        <div class="filter-container" *ngIf = "section==='My Jobs'">
+            <div class="status-filter" style="margin-top: 15px;">
+                    
+                <div class="status" [ngClass]="{'active-chip-orange' : job_status_filter=='OnGoing', 'not-active-chip':job_status_filter!='OnGoing'}" (click)="FilterByStatus('OnGoing')">
+                    <span class="material-symbols-outlined">
+                        done_all
+                    </span>
+                    <p>OnGoing</p>
+                </div>
+            
+    
+                <div class="status" [ngClass]="{'active-chip-orange' : job_status_filter=='Applied', 'not-active-chip':job_status_filter!='Applied'}" (click)="FilterByStatus('Applied')">
+                    <span class="material-symbols-outlined">
+                        work
+                    </span>
+                    <p>Applied</p>
+                </div>
+    
+                <div class="status" [ngClass]="{'active-chip-orange' : job_status_filter=='Saved', 'not-active-chip':job_status_filter!='Saved'}" (click)="FilterByStatus('Saved')">
+                    <span class="material-symbols-outlined">
+                        bookmark
+                    </span>
+                    <p>Saved</p>
+                </div>
+            
+            </div>
+        </div>
+        
+
         <div class="grid-box">
             <div class="card" *ngFor="let item of jobs_lst">
-                <h1>Job Title</h1>
-                <p class="company-name">Company</p>
-                <p class="skills-needed">Skills Needed</p>
-                <button class="apply-button">Apply Now</button>
-                <button class="save-button">save job</button>
+                <div class="card-top">
+                    <h1>Job Title</h1>
+                    <div class="date">
+                        <span class="material-symbols-outlined">
+                            event
+                        </span>
+                        <p>16-07-2023</p>
+                    </div>
+                </div>
+                
+                <div class="card-middle">
+                    
+                    <div class="card-item company-name" style="color: white;">
+                        <span class="material-icons">
+                            business
+                        </span>
+                        <p>Company</p>
+                    </div>
+
+                    <div class="card-item">
+                        <span class="material-symbols-outlined">
+                            receipt_long
+                        </span>
+                        <p>Job ID : 000024</p>
+                    </div>
+
+                    <div style="display: flex;align-items:center;gap:25px">
+                        <div class="card-item">
+                            <span class="material-icons">
+                                category
+                            </span>
+                            <p>IT - Product</p>
+                        </div>
+    
+                        <div class="card-item">
+                            <span class="material-icons">
+                                engineering 
+                            </span>
+                            <p>Internship</p>
+                        </div>
+    
+                        <div class="card-item">
+                            <span class="material-icons">
+                                date_range
+                            </span>
+                            <p>6 Months</p>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div class="card-middle">
+                    <div style="display: flex;align-items:center;gap:15px">
+                        <div class="card-item">
+                            <span class="material-icons">
+                                monetization_on
+                            </span>
+                            <p>Salary</p>
+                        </div>
+    
+                        <div class="card-item">
+                            <span class="material-icons">
+                                location_on
+                            </span>
+                            <p>Location</p>
+                        </div>
+                    </div>
+                    
+
+                
+
+                <div class="btns">
+                    <button mat-raised-button style="background-color: #2196f3;color:white">Apply Now</button>
+                    <button mat-raised-button style="color: #2196f3;border : 1px solid #2196f3">save job</button>
+                </div>
+                
             </div>
             
-           
         </div>
         
         
