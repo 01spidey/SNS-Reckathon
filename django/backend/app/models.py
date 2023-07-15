@@ -25,6 +25,8 @@ class Student(models.Model):
 class Company(models.Model):
     username = models.CharField(max_length=50, null=False)
     password = models.CharField(max_length=50, null=False)
+    hr_name = models.CharField(max_length=50, null=True)
+    type = models.CharField(max_length=50, null=True)
     mail = models.EmailField(null=False)
     phone = models.CharField(max_length=50, null=False)
     category = models.CharField(max_length=50, null=False)

@@ -1,0 +1,228 @@
+<div class="add-drive-box">
+    <h1>Register as {{user_role}}</h1>
+    <div class="form-box">
+        <form [formGroup]="CompanySignUpForm" *ngIf="company_signup">
+
+            <p class="section-name">Organization Details</p>
+            <div class="section">
+                <div class="input">
+                    <p>Organization Name</p>
+                    <mat-form-field>
+                        <mat-label>AutoDesk</mat-label>
+                        <input matInput formControlName = "company">
+                    </mat-form-field> 
+                </div>
+            </div>
+            
+
+            <div class="section">
+                <div class="input">
+                    <p>Organization Type</p>
+                    <mat-form-field>
+                        <mat-label>-- Select -- </mat-label>
+                        <mat-select formControlName = "type">
+                            <mat-option value="Startup">Startup</mat-option>
+                            <mat-option value="Individual">Individual</mat-option>
+                            <mat-option value="MNC">MNC</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+    
+                <div class="input">
+                    <p>Category</p>
+                    <mat-form-field>
+                        <mat-label>-- Select -- </mat-label>
+                        <mat-select formControlName = "category">
+                            <mat-option value="IT - Product">IT - Product</mat-option>
+                            <mat-option value="IT - Service">IT - Service</mat-option>
+                            <mat-option value="IT - Product/Service">IT - Product/Service</mat-option>
+                            <mat-option value="Non-IT">Non-IT</mat-option>
+                            <mat-option value="Core">Core</mat-option>
+                            <mat-option value="Other">Other</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <p class="section-name">Personal Information</p>
+
+            <div class="section">
+                <div class="input">
+                    <p>HR Name</p>
+                    <mat-form-field class="input">
+                        <mat-label>Tom H</mat-label>
+                        <input matInput formControlName = "hr_name">
+                    </mat-form-field>
+                </div>
+
+                <div class="input">
+                    <p>Mail</p>
+                    <mat-form-field>
+                        <mat-label>tomh@autodesk.com</mat-label>
+                        <input matInput formControlName = "mail">
+                    </mat-form-field> 
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="input">
+                    <p>Phone</p>
+                    <mat-form-field>
+                        <mat-label>xxxxxxxxxx</mat-label>
+                        <input matInput formControlName = "phone">
+                        <p matPrefix >+91</p>
+                    </mat-form-field> 
+                </div>
+            </div>
+
+            <p class="section-name">Login Credentialls</p>
+            <div class="section">
+                <div class="input">
+                    <p>Username</p>
+                    <mat-form-field>
+                        <mat-label>username</mat-label>
+                        <input matInput formControlName = "username">
+                    </mat-form-field> 
+                </div>
+
+                <div class="input">
+                    <p>Password</p>
+                    <mat-form-field>
+                        <mat-label>password</mat-label>
+                        <input matInput formControlName = "password">
+                    </mat-form-field> 
+                </div>
+            </div>
+
+            
+            
+
+            <div class="btns">
+              <button mat-raised-button id="reset" (click)="closePopup()">Close</button>
+              <button mat-raised-button id="add" (click)="proceedSignUp()">Sign Up</button>
+            </div>
+          
+        </form>
+
+        <form [formGroup]="StudentSignUpForm" *ngIf="student_signup">
+
+            <p class="section-name">Personal Information</p>
+
+            <div class="section">
+                <div class="input">
+                    <p>Student Name</p>
+                    <mat-form-field class="input">
+                        <mat-label>Tom H</mat-label>
+                        <input matInput formControlName = "name">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="input">
+                    <p>Mail</p>
+                    <mat-form-field>
+                        <mat-label>tomh@kpriet.ac.in</mat-label>
+                        <input matInput formControlName = "mail">
+                    </mat-form-field> 
+                </div>
+
+                <div class="input">
+                    <p>Phone</p>
+                    <mat-form-field>
+                        <mat-label>xxxxxxxxxx</mat-label>
+                        <input matInput formControlName = "phone">
+                        <p matPrefix >+91</p>
+                    </mat-form-field> 
+                </div>
+            </div>
+
+            <p class="section-name">Education Information</p>
+            <div class="section">
+                <div class="input">
+                    <p>College Name</p>
+                    <mat-form-field>
+                        <mat-label>KPR Institute of Engineering and Technology</mat-label>
+                        <input matInput formControlName = "college">
+                    </mat-form-field> 
+                </div>
+
+                <div class="input">
+                    <p>Degree</p>
+                    <mat-form-field>
+                        <mat-label>Bachelor of Engineering</mat-label>
+                        <input matInput formControlName = "degree">
+                    </mat-form-field>
+                </div>
+                
+            </div>
+
+            <div class="section">
+                <div class="input">
+                    <p>Stream</p>
+                    <mat-form-field>
+                        <mat-label>Computer Science and Engineering</mat-label>
+                        <input matInput formControlName = "stream">
+                    </mat-form-field> 
+                </div>
+
+                <div class="input">
+                    <p>CGPA (latest)</p>
+                    <mat-form-field>
+                        <mat-label>8.76</mat-label>
+                        <input matInput formControlName = "cgpa">
+                    </mat-form-field>
+                </div>
+
+                
+            </div>
+
+            <div class="section">
+                <div class="input">
+                    <p>Start Year</p>
+                    <mat-form-field>
+                        <mat-label>2020</mat-label>
+                        <input matInput formControlName = "start_year">
+                    </mat-form-field>
+                </div>
+
+                <div class="input">
+                    <p>End Year (or Expected)</p>
+                    <mat-form-field>
+                        <mat-label>2024</mat-label>
+                        <input matInput formControlName = "end_year">
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <p class="section-name">Login Credentials</p>
+            <div class="section">
+                <div class="input">
+                    <p>Username</p>
+                    <mat-form-field>
+                        <mat-label>username</mat-label>
+                        <input matInput formControlName = "username">
+                    </mat-form-field> 
+                </div>
+
+                <div class="input">
+                    <p>Password</p>
+                    <mat-form-field>
+                        <mat-label>password</mat-label>
+                        <input matInput formControlName = "password">
+                    </mat-form-field> 
+                </div>
+            </div>
+
+            
+            
+
+            <div class="btns">
+              <button mat-raised-button id="reset" (click)="closePopup()">Close</button>
+              <button mat-raised-button id="add" (click)="proceedSignUp()">Sign Up</button>
+            </div>
+          
+        </form>
+    </div>
+    
+</div>

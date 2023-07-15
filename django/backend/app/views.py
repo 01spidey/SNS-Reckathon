@@ -36,17 +36,19 @@ def register(request):
     user_role = formdata['user_role']
     
     try:
-        if(user_role=='company'):
+        if(user_role=='Company'):
             username=formdata['username']
             password=formdata['password']
             mail=formdata['mail']
             phone=formdata['phone']
             category=formdata['category']
             company = formdata['company']
+            type = formdata['type']
+            hr_name = formdata['hr_name']
             
             print(formdata)
+            
             if(len(Company.objects.filter(username = username))>0):
-                print(Company.objects.get(username = username).username)
                 data = {
                     'success' : False,
                     'message' : 'Username Already Exists!!'
@@ -55,11 +57,14 @@ def register(request):
                 
             else:
                 company = Company.objects.create(
+                    username = username,
                     company = company,
                     password = password,
                     mail = mail,
                     phone = phone,
-                    category = category
+                    category = category,
+                    type = type,
+                    hr_name = hr_name
                 )
                 
                 company.save()
@@ -81,6 +86,7 @@ def register(request):
             degree = formdata['degree']
             stream = formdata['stream']
             name = formdata['name']
+            
             
             if(len(Student.objects.filter(username = username))>0):
                 data = {
@@ -124,30 +130,51 @@ def register(request):
 
 @csrf_exempt
 def login(request):
-    formdata = json.loads(request.body)
-    username = formdata['username']
-    password = formdata['password']
-    role = formdata['role']
+    username = request.GET['username']
+    password = request.GET['password']
+    user_role = request.GET['user_role']
     
-    if(role=='Student'):
+    if(user_role=='Student'):
         if(Student.objects.filter(username = username, password = password).exists()):
             name = Student.objects.get(username = username).name
+            student = Student.objects.get(username = username)
             data = {
                 'success' : True,
-                'message' : f'Welcome {name}'
+                'message' : f'Welcome {name}',
+                'user_data' : {
+                    'name' : student.name,
+                    'mail' : student.mail,
+                    'phone' : student.phone,
+                    'college' : student.college,
+                    'cgpa' : student.cgpa,
+                    'batch' : student.batch,
+                    'degree' : student.degree,
+                    'stream' : student.stream
+                }
             }
+            
         else:
             data = {
                 'success' : False,
-                'message' : 'User Not Found!!'
+                'message' : 'User Not Found!!',
+                'user_data' : ''
             }
         return JsonResponse(data)
     
     else:
         if(Company.objects.filter(username = username, password = password).exists()):
+            company = Company.objects.get(username = username)
             data = {
                 'success' : True,
-                'message' : f'Welcome {name}'
+                'message' : f'Welcome {company.hr_name}',
+                'user_data' : {
+                    'company' : company.company,
+                    'type' : company.type,
+                    'category' : company.category,
+                    'hr_name' : company.hr_name,
+                    'mail' : company.mail,
+                    'phone' : company.phone,
+                }
             }
         else:
             data = {

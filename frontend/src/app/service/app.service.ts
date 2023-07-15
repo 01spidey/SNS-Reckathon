@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { loginResponse, serverResponse } from '../models/model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,14 @@ export class AppService {
 
   test(){
     return this.http.get(`${this.URL}/test`)
+  }
+
+  register(data:any){
+    return this.http.post<serverResponse>(`${this.URL}/register`, data)
+  }
+
+  login(data:any){
+    return this.http.get<loginResponse>(`${this.URL}/login`, {params:data})
   }
 
 

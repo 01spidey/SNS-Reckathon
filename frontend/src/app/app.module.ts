@@ -15,12 +15,18 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { NgxOtpInputModule } from 'ngx-otp-input';
 import { HomeComponent } from './home/home.component';
 import { StudentDashboardComponent } from './student-dashboard/student-dashboard.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterPopupComponent } from './register-popup/register-popup.component';
+import { CompanyDashBoardComponent } from './company-dash-board/company-dash-board.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    StudentDashboardComponent
+    StudentDashboardComponent,
+    LoginComponent,
+    RegisterPopupComponent,
+    CompanyDashBoardComponent
   ],
   imports: [
     BrowserModule,
