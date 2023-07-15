@@ -11,6 +11,7 @@ from django.contrib.postgres.fields.jsonb import JSONField
 class Student(models.Model):
     username = models.CharField(max_length=50, null=False)
     password = models.CharField(max_length=50, null=False)
+    name = models.CharField(max_length=50, null=False)
     mail = models.EmailField(null=False)
     phone = models.CharField(max_length=50, null=False)
     college = models.CharField(max_length=50, null=False)
@@ -19,6 +20,7 @@ class Student(models.Model):
     degree = models.CharField(max_length=50, null=False)
     stream = models.CharField(max_length=100, null=False)
     jobs_applied = models.ManyToManyField('Job', through='JobSelection')
+    saved_jobs = models.CharField(max_length=100, null=True, default='')
 
 class Company(models.Model):
     username = models.CharField(max_length=50, null=False)
@@ -26,11 +28,11 @@ class Company(models.Model):
     mail = models.EmailField(null=False)
     phone = models.CharField(max_length=50, null=False)
     category = models.CharField(max_length=50, null=False)
-    website = models.CharField(max_length=50, null=False)
+    website = models.CharField(max_length=50, null=True, default='')
     company = models.CharField(max_length=100, null=False)
 
 class Job(models.Model):
-    job_id = models.CharField(max_length=50, null=False)
+    job_id = models.AutoField(primary_key=True)
     company = models.CharField(max_length=50, null=False)
     role = models.CharField(max_length=50, null=False)
     job_desc = models.TextField(null=False)
@@ -38,6 +40,7 @@ class Job(models.Model):
     salary = models.FloatField(null=True)
     location = models.CharField(null=True)
     duration = models.IntegerField(null=False)
+    date = models.DateTimeField(auto_now_add=True, null=True)
     applicants = models.ManyToManyField('Student', through='JobSelection')
 
 class JobSelection(models.Model):
