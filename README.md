@@ -1,28 +1,28 @@
 # SNS-Reckathon
 
 
-Internship Aggregator
+<h1>Internship Aggregator</h1>
 This is an Internship Aggregator web application built using Angular for the frontend, Django for the backend, PostgreSQL for the database, and GitHub Actions for continuous integration pipelines. The application is hosted on AWS for scalability and reliability.
 
-Features
+<h1>Features</h1>
 Internship Listings: Browse and search for various internships from different companies and organizations.
 
-User Profiles: Create an account, log in, and manage your profile to save preferences and view application history.
+<h2>User Profiles:</h2> Create an account, log in, and manage your profile to save preferences and view application history.
 
-Filter and Sort: Easily filter internships based on location, duration, skills required, and more. Sort results by relevance, date, or salary.
+<h2>Filter and Sort:</h2> Easily filter internships based on location, duration, skills required, and more. Sort results by relevance, date, or salary.
 
-Apply Online: Apply to internships directly through the platform with a well-structured application process.
+<h2>Apply Online:</h2> Apply to internships directly through the platform with a well-structured application process.
 
-Admin Panel: Admins can manage internship listings, user data, and view analytics.
+<h2>Admin Panel:</h2> Admins can manage internship listings, user data, and view analytics.
 
-Technologies Used
-Angular: Angular is used to create the responsive and dynamic frontend user interface.
+<h1>Technologies Used</h1>
+<b>Angular</b>: Angular is used to create the responsive and dynamic frontend user interface.
 
-Django: Django serves as the backend framework, handling authentication, database interactions, and business logic.
+<b>Django:</b> Django serves as the backend framework, handling authentication, database interactions, and business logic.
 
-PostgreSQL: PostgreSQL is the database system that stores internship listings and user data.
+<b>PostgreSQL:</b> PostgreSQL is the database system that stores internship listings and user data.
 
-GitHub Actions: GitHub Actions is used to set up continuous integration and deployment pipelines for seamless updates and testing.
+<b>GitHub Actions:</b> GitHub Actions is used to set up continuous integration and deployment pipelines for seamless updates and testing.
 
 AWS: The application is hosted on AWS, ensuring high availability and scalability.
 
@@ -51,8 +51,8 @@ AWS: The application is hosted on AWS, ensuring high availability and scalabilit
 ![Screenshot (883)](https://github.com/01spidey/SNS-Reckathon/assets/68471103/38ef58e6-5dc6-448e-88ae-ad1d96994b79)
 
 <h1>Deployment</h1>
-![Uploading Screenshot (888).png…]()
 
+![Screenshot (888)](https://github.com/01spidey/SNS-Reckathon/assets/68471103/3d31e628-169c-4e2d-90c1-3802bdf4b05f)
 
 
 
