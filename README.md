@@ -24,7 +24,7 @@ Internship Listings: Browse and search for various internships from different co
 
 <b>GitHub Actions:</b> GitHub Actions is used to set up continuous integration and deployment pipelines for seamless updates and testing.
 
-AWS: The application is hosted on AWS, ensuring high availability and scalability.
+<b>AWS:</b> The application is hosted on AWS, ensuring high availability and scalability.
 
 <h1>Company Dashboard</h1>
 
