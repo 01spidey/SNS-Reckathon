@@ -1,0 +1,91 @@
+<div class="add-drive-box">
+    <h1>Publish a Job</h1>
+    <div class="form-box">
+
+        <!-- company = models.CharField(max_length=50, null=False)
+    role = models.CharField(max_length=50, null=False)
+    job_desc = models.TextField(null=False)
+    job_type = models.CharField(max_length=50, null=False)
+    salary = models.FloatField(null=True)
+    location = models.CharField(null=True)
+    duration  -->
+
+        <form [formGroup]="addJobForm">
+
+            <div class="section">
+                <div class="input">
+                    <p>Job Role</p>
+                    <mat-form-field>
+                        <mat-label>SDE Intern</mat-label>
+                        <input matInput formControlName = "job_role">
+                    </mat-form-field> 
+                </div>
+            </div>
+            
+
+            <div class="section">
+                <div class="input">
+                    <p>Job Type</p>
+                    <mat-form-field>
+                        <mat-label>-- Select -- </mat-label>
+                        <mat-select formControlName = "job_type" [(ngModel)]="job_type" >
+                            <mat-option value="Job">Full-Time</mat-option>
+                            <mat-option value="Internship">Internship</mat-option>
+                            <mat-option value="Freelance">Freelance</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+    
+                <div class="input">
+                    <p>Duration</p>
+                    <mat-form-field>
+                        <mat-label>Duration</mat-label>
+                        <input matInput formControlName = "duration">
+                        <p matSuffix style="margin-right:20px" *ngIf="job_type==='Freelance'">hrs</p>
+                        <p matSuffix style="margin-right:20px" *ngIf="job_type==='Internship'">months</p>
+                        <!-- <p matSuffix style="margin-right:20px" *ngIf="job_type==='Job'">LPA</p> -->
+                    </mat-form-field>
+                </div>
+            </div>
+
+
+            <div class="section">
+                <div class="input">
+                    <p>Salary</p>
+                    <mat-form-field class="input" >
+                        <mat-label>25000</mat-label>
+                        <input matInput formControlName = "salary">
+                        <p matSuffix style="margin-right:20px" *ngIf="job_type==='Freelance'">/hr</p>
+                        <p matSuffix style="margin-right:20px" *ngIf="job_type==='Internship'">/month</p>
+                        <p matSuffix style="margin-right:20px" *ngIf="job_type==='Job'">LPA</p>
+                    </mat-form-field>
+                </div>
+
+                <div class="input">
+                    <p>Location</p>
+                    <mat-form-field>
+                        <mat-label>Pune, India</mat-label>
+                        <input matInput formControlName = "location">
+                    </mat-form-field> 
+                </div>
+            </div>
+
+            <div class="input">
+                <p>Job Description</p>
+                <mat-form-field>
+                    <mat-label>Write Job Description Here...</mat-label>
+                    <textarea matInput formControlName = "job_desc"></textarea>
+                </mat-form-field> 
+            </div>
+            
+            
+
+            <div class="btns">
+              <button mat-raised-button id="reset" (click)="closePopup()">Close</button>
+              <button mat-raised-button id="add" (click)="publishJob()">Publish</button>
+            </div>
+          
+        </form>
+    </div>
+    
+</div>

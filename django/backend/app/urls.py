@@ -9,5 +9,7 @@ urlpatterns = [
     path('register', views.register),
     path('login', views.login),
     path('publish_job', views.publish_job),
-    path('get_jobs', views.get_jobs)
+    path('get_jobs', views.get_jobs),
+    path('apply_job', views.apply_job),
+    path('save_job', views.save_job),
 ]

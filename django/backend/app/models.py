@@ -20,7 +20,7 @@ class Student(models.Model):
     degree = models.CharField(max_length=50, null=False)
     stream = models.CharField(max_length=100, null=False)
     jobs_applied = models.ManyToManyField('Job', through='JobSelection')
-    saved_jobs = models.CharField(max_length=100, null=True, default='')
+    saved_jobs = ArrayField(models.IntegerField(), default=list)
 
 class Company(models.Model):
     username = models.CharField(max_length=50, null=False)

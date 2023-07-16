@@ -18,6 +18,9 @@ import { StudentDashboardComponent } from './student-dashboard/student-dashboard
 import { LoginComponent } from './login/login.component';
 import { RegisterPopupComponent } from './register-popup/register-popup.component';
 import { CompanyDashBoardComponent } from './company-dash-board/company-dash-board.component';
+import { AddJobPopupComponent } from './add-job-popup/add-job-popup.component';
+import { PopupComponent } from 'ag-grid-community';
+import { ConfimPopupComponent } from './confim-popup/confim-popup.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,9 @@ import { CompanyDashBoardComponent } from './company-dash-board/company-dash-boa
     StudentDashboardComponent,
     LoginComponent,
     RegisterPopupComponent,
-    CompanyDashBoardComponent
+    CompanyDashBoardComponent,
+    AddJobPopupComponent,
+    ConfimPopupComponent
   ],
   imports: [
     BrowserModule,

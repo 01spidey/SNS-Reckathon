@@ -27,8 +27,21 @@ export class AppService {
     return this.http.get<loginResponse>(`${this.URL}/login`, {params:data})
   }
 
+
+  addJob(data:any){
+    return this.http.post<serverResponse>(`${this.URL}/publish_job`, data)
+  }
+
   getJobs(data:any){
     return this.http.get<serverResponse>(`${this.URL}/get_jobs`, {params:data})
+  }
+
+  applyJob(data:any){
+    return this.http.post<serverResponse>(`${this.URL}/apply_job`, data)
+  }
+
+  saveJob(data:any){
+    return this.http.post<serverResponse>(`${this.URL}/save_job`, data)
   }
 
 

@@ -237,12 +237,12 @@
         <div class="grid-box">
             <div class="card" *ngFor="let item of jobs_lst">
                 <div class="card-top">
-                    <h1>Job Title</h1>
+                    <h1>{{item[2]}}</h1>
                     <div class="date">
                         <span class="material-symbols-outlined">
                             event
                         </span>
-                        <p>16-07-2023</p>
+                        <p>{{convertDate(item[7])}}</p>
                     </div>
                 </div>
                 
@@ -252,14 +252,14 @@
                         <span class="material-icons">
                             business
                         </span>
-                        <p>Company</p>
+                        <p>{{item[1]}}</p>
                     </div>
 
                     <div class="card-item">
                         <span class="material-symbols-outlined">
                             receipt_long
                         </span>
-                        <p>Job ID : 000024</p>
+                        <p>Job ID : {{convertJobID(item[0])}}</p>
                     </div>
 
                     <div style="display: flex;align-items:center;gap:25px">
@@ -267,21 +267,21 @@
                             <span class="material-icons">
                                 category
                             </span>
-                            <p>IT - Product</p>
+                            <p>{{item[9]}}</p>
                         </div>
     
                         <div class="card-item">
                             <span class="material-icons">
                                 engineering 
                             </span>
-                            <p>Internship</p>
+                            <p>{{item[4]==='Job'?'Full-Time' : item[4]}}</p>
                         </div>
     
-                        <div class="card-item">
+                        <div class="card-item" *ngIf="item[6]!==0">
                             <span class="material-icons">
                                 date_range
                             </span>
-                            <p>6 Months</p>
+                            <p>{{item[6]}} {{item[4]==='Internship'?'months' : item[4]==='Freelance'?'hrs' : ''}}</p>
                         </div>
                     </div>
                     
@@ -293,27 +293,28 @@
                             <span class="material-icons">
                                 monetization_on
                             </span>
-                            <p>Salary</p>
+                            <p>{{item[5]}} {{item[4]==='Internship'?'/month' : item[4]==='Freelance'?'/hr' : 'LPA'}}</p>
                         </div>
     
                         <div class="card-item">
                             <span class="material-icons">
                                 location_on
                             </span>
-                            <p>Location</p>
+                            <p>{{item[8]}}</p>
                         </div>
                     </div>
                     
-
-                
-
                 <div class="btns">
-                    <button mat-raised-button style="background-color: #2196f3;color:white">Apply Now</button>
-                    <button mat-raised-button style="color: #2196f3;border : 1px solid #2196f3">save job</button>
+                    <button mat-raised-button style="background-color: #2196f3;color:white" (click)="applyJob(item[0])">Apply Now</button>
+                    <button mat-raised-button style="color: #2196f3;border : 1px solid #2196f3" (click)="saveJob(item[0])">save job</button>
                 </div>
                 
             </div>
             
+        </div>
+
+        <div class="popup-container" *ngIf="confirmPopup">
+            <app-confim-popup (close_popup)="handleConfirmPopup($event)" [jobData] = jobData *ngIf="confirmPopup"></app-confim-popup>
         </div>
         
         

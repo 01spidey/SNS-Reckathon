@@ -189,7 +189,7 @@ def publish_job(request):
         formdata = json.loads(request.body)
     
         company = formdata['company']
-        role = formdata['role']
+        role = formdata['job_role']
         job_desc = formdata['job_desc']
         salary = formdata['salary']
         # salary_unit = formdata['salary_unit']
@@ -198,15 +198,17 @@ def publish_job(request):
         # date_unit = formdata['date_unit']
         job_type = formdata['job_type']
         
+        print(formdata)
+                    
         
         job = Job.objects.create(
             company = company,
             role = role,
             job_desc = job_desc,
             job_type = job_type,
-            salary = salary,
+            salary = 0 if salary=='' else float(salary),
             location = location,
-            duration = duration,
+            duration = 0 if duration=='' else float(duration),
         )
         
         job.save()
@@ -227,11 +229,65 @@ def publish_job(request):
 
 @csrf_exempt
 def apply_job(request):
-    pass
+    formdata = json.loads(request.body)
+    print(formdata)
+    job_id = formdata['job_id']
+    username = formdata['username']
+    
+    try:
+        job_obj = Job.objects.get(job_id = job_id)
+        student_obj = Student.objects.get(username = username)
+        
+        job_obj.applicants.add(student_obj)
+        student_obj.jobs_applied.add(job_obj)
+        
+        data = {
+            'success' : True,
+            'message' : 'Job Applied Successfully!!'
+        }
+        
+        return JsonResponse(data)
+    
+    except Exception as e:
+        print(e)
+        data = {
+            'success' : False,
+            'message' : 'Job Application Failed!!'
+        }
+        
+        return JsonResponse(data)
 
 @csrf_exempt
 def save_job(request):
-    pass
+    formdata = json.loads(request.body)
+
+    job_id = formdata['job_id']
+    username = formdata['username']
+    
+    try:
+        job_obj = Job.objects.get(job_id = job_id)
+        student_obj = Student.objects.get(username = username)
+        saved_jobs  = student_obj.saved_jobs
+        
+        saved_jobs.append(job_obj.pk)
+        student_obj.saved_jobs = saved_jobs
+        student_obj.save()
+        
+        data = {
+            'success' : True,
+            'message' : 'Job Saved Successfully!!'
+        }
+    
+        return JsonResponse(data)
+    
+    except Exception as e:
+        print(e)
+        data = {
+            'success' : False,
+            'message' : 'Job Save Failed!!'
+        }
+        
+        return JsonResponse(data)
 
 @csrf_exempt
 def view_applicants(request):
@@ -244,67 +300,112 @@ def change_status(request):
 def get_jobs(request):
     jobs = []
     
-    # try:
     formdata = request.GET
-    
+        
     job_type = formdata['job_type_filter']
     category = formdata['job_category_filter']  
+    user_role = formdata['role']
+    print(user_role)
     
-    print(formdata)
-    companies = Company.objects.all()
-    
-    if(category!='All'):
-        companies = companies.filter(category = category)
-    
-    company_lst = companies.values('company')
-    
-    # jobs = Job.objects.all()
-    jobs_lst = []
-    
-    if(job_type!='All'):
-        jobs_lst = Job.objects.filter(job_type = job_type, company__in=company_lst).values(
-            'job_id',
-            'company',
-            'role',
-            'job_desc',
-            'job_type',
-            'salary',
-            'duration',
-            'date',
-        )
-        print(jobs_lst)
-    else:
-        jobs_lst = Job.objects.filter(company__in=company_lst).values(
-            'job_id',
-            'company',
-            'role',
-            'job_desc',
-            'job_type',
-            'salary',
-            'duration',
-            'date',
-        )
-    
-    jobs = list(jobs_lst)
-    
-    data = {
-        'success' : True,
-        'jobs' : jobs
-    }
-    return JsonResponse(data)
-           
-    
-    # except Exception as e:
+    try:
+        if(user_role=='Student'):        
+            companies = Company.objects.all()
+            
+            if(category!='All'):
+                companies = companies.filter(category = category)
+            
+            company_lst = companies.values_list('company', flat=True)
+            # print('Companies : ', company_lst) 
+            
+            jobs = Job.objects.all()
+            jobs_lst = []
+            
+            if(job_type!='All'):
+                jobs_lst = jobs.filter(job_type = job_type, company__in=company_lst).values_list(
+                    'job_id',
+                    'company',
+                    'role',
+                    'job_desc',
+                    'job_type',
+                    'salary',
+                    'duration',
+                    'date',
+                    'location'
+                )
+                # print(jobs_lst)
+                
+            else:
+                jobs_lst = jobs.filter(company__in=company_lst).values_list(
+                    'job_id',
+                    'company',
+                    'role',
+                    'job_desc',
+                    'job_type',
+                    'salary',
+                    'duration',
+                    'date',
+                    'location'
+                )
+                
+                # print(jobs_lst)
+                        
+            
+            jobs = list(jobs_lst)
+            
+            for i in range(len(jobs)):
+                jobs[i] = list(jobs[i])
+                cat = Company.objects.get(company = jobs[i][1]).category
+                jobs[i].append(cat)
+            
+            print(jobs)
+            
+            data = {
+                'success' : True,
+                'jobs' : jobs
+            }
+            return JsonResponse(data)
         
-    #     print('Exception : '+e)
+        else:
+            jobs = Job.objects.all()
+            
+            jobs_lst = jobs.filter(company=user_role).values_list(
+                    'job_id',
+                    'company',
+                    'role',
+                    'job_desc',
+                    'job_type',
+                    'salary',
+                    'duration',
+                    'date',
+                    'location'
+                )
+            
+            jobs = list(jobs_lst)
+            
+            for i in range(len(jobs)):
+                jobs[i] = list(jobs[i])
+                cat = Company.objects.get(company = jobs[i][1]).category
+                jobs[i].append(cat)
+                
+            data = {
+                'success' : True,
+                'jobs' : jobs
+            }
+            return JsonResponse(data)
+            
+                
         
-    #     data = {
-    #         'success' : False,
-    #         'message' : e,
-    #         'jobs' : jobs
-    #     }
+    except Exception as e:
         
-    #     return JsonResponse(data)
+        print('Exception : ', e)
+        
+        data = {
+            'success' : False,
+            'message' : e,
+            'jobs' : jobs
+        }
+        
+        return JsonResponse(data)
     
     
     
