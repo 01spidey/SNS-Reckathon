@@ -21,6 +21,7 @@ export class CompanyDashBoardComponent {
   job_category_filter: string = ''
   job_status_filter = 'OnGoing'
   add_job_popup = false
+  student_table_popup: boolean = false;
 
   
 
@@ -78,12 +79,37 @@ export class CompanyDashBoardComponent {
     return formattedDate;
   }
 
-  viewApplicants(){
+  viewApplicants(pk:number){
+    let data ={
+      job_id : pk,
+      role : this.cur_user_data.company
+    }
+
+    this.student_table_popup = true 
+
+    // this.service.getApplicants(data).subscribe(
+    //   (res:any)=>{
+    //     if(res.success){
+    //       sessionStorage.setItem('applicants', JSON.stringify(res.applicants))
+    //       // this.router.navigate(['/applicants'])
+    //     }
+    //     else{
+    //       this.toastr.error('Something Went Wrong')
+    //     }
+    //   },
+    //   err=>{
+    //     this.toastr.error('Server Not Responding')
+    //   }
+    // )
 
   }
 
   closeApplication(){
 
+  }
+
+  handleTablePopup(flag:any){
+    this.student_table_popup = flag
   }
   
   convertJobID(id:number):string{

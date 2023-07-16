@@ -21,6 +21,7 @@ import { CompanyDashBoardComponent } from './company-dash-board/company-dash-boa
 import { AddJobPopupComponent } from './add-job-popup/add-job-popup.component';
 import { PopupComponent } from 'ag-grid-community';
 import { ConfimPopupComponent } from './confim-popup/confim-popup.component';
+import { StudentTableComponent } from './student-table/student-table.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ConfimPopupComponent } from './confim-popup/confim-popup.component';
     RegisterPopupComponent,
     CompanyDashBoardComponent,
     AddJobPopupComponent,
-    ConfimPopupComponent
+    ConfimPopupComponent,
+    StudentTableComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ export class AppService {
 
 
   // URL = "http://127.0.0.1:8000";
-  URL = ' https://171b-203-223-191-6.ngrok-free.app'
+  URL = 'https://b169-203-223-191-6.ngrok-free.app'
 
   constructor(
     private http:HttpClient,

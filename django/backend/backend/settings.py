@@ -132,7 +132,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:4200',
-    'https://171b-203-223-191-6.ngrok-free.app',
+    'https://b169-203-223-191-6.ngrok-free.app',
     'http://reckathon.s3-website-us-east-1.amazonaws.com',
     'https://sns-reckathon.vercel.app'
 ]
