@@ -1,0 +1,28 @@
+Technical stack
+
+AngularJS: AngularJS will be used for front-end development, providing a robust framework for building dynamic and interactive user interfaces.
+
+Django: Django, a powerful Python web framework, will be employed for back-end development. It offers features such as authentication,
+database management, and API integration.
+
+PostgreSQL: PostgreSQL will serve as the database management system, ensuring efficient and secure storage and retrieval of data.
+
+Key Features:
+
+User Authentication: The platform will provide a secure user authentication system where students and employers can register and 
+log in using their credentials.
+
+Student Portfolio: Each student will have a dedicated portfolio section to showcase their skills, previous work, and achievements. 
+This portfolio will be used to authenticate student talent and work quality.
+
+Job Aggregation: The platform will aggregate various freelance, internship, and full time job postings from different sources. 
+These jobs will be made available to students for application.
+
+Job Matching: The platform will use matching algorithms to suggest relevant jobs to students based on their skills and preferences. 
+This will enhance the chances of students finding suitable internship opportunities.
+
+Application and Selection Process: Students can browse and apply for the available jobs. Employers will review the applications received 
+and select the most suitable candidate for each job.
+
+Work Progress Tracking: Once selected for a job, students and employers will have a collaborative workspace to communicate, 
+share project details, and track the progress of the assigned tasks.
