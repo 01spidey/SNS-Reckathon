@@ -34,4 +34,4 @@ AWS: The application is hosted on AWS, ensuring high availability and scalabilit
 
 ![Screenshot (886)](https://github.com/01spidey/SNS-Reckathon/assets/68471103/cf5010b3-d625-4953-b799-6510398a5c4a)
 
-
+<h1>Frontend Hosting on AWS</h1>
