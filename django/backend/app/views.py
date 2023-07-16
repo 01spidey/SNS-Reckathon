@@ -244,13 +244,25 @@ def change_status(request):
 def get_jobs(request):
     jobs = []
     
-    try:
-        formdata = request.GET
-        
-        job_type = formdata['job_type']
-        category = formdata['category']  
-        
-        jobs_lst = Job.objects.filter(job_type = job_type, category = category).values(
+    # try:
+    formdata = request.GET
+    
+    job_type = formdata['job_type_filter']
+    category = formdata['job_category_filter']  
+    
+    print(formdata)
+    companies = Company.objects.all()
+    
+    if(category!='All'):
+        companies = companies.filter(category = category)
+    
+    company_lst = companies.values('company')
+    
+    # jobs = Job.objects.all()
+    jobs_lst = []
+    
+    if(job_type!='All'):
+        jobs_lst = Job.objects.filter(job_type = job_type, company__in=company_lst).values(
             'job_id',
             'company',
             'role',
@@ -260,23 +272,39 @@ def get_jobs(request):
             'duration',
             'date',
         )
-        
-        jobs = list(jobs_lst)
-        
-        data = {
-            'success' : True,
-            'jobs' : jobs
-        }
-        return JsonResponse(data)
+        print(jobs_lst)
+    else:
+        jobs_lst = Job.objects.filter(company__in=company_lst).values(
+            'job_id',
+            'company',
+            'role',
+            'job_desc',
+            'job_type',
+            'salary',
+            'duration',
+            'date',
+        )
+    
+    jobs = list(jobs_lst)
+    
+    data = {
+        'success' : True,
+        'jobs' : jobs
+    }
+    return JsonResponse(data)
            
     
-    except Exception as e:
-        print(e)
-        data = {
-            'success' : False,
-            'jobs' : jobs
-        }
-        return JsonResponse(data)
+    # except Exception as e:
+        
+    #     print('Exception : '+e)
+        
+    #     data = {
+    #         'success' : False,
+    #         'message' : e,
+    #         'jobs' : jobs
+    #     }
+        
+    #     return JsonResponse(data)
     
     
     

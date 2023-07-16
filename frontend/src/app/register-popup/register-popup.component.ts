@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AppService } from '../service/app.service';
-import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { serverResponse } from '../models/model';
 
@@ -27,7 +26,6 @@ export class RegisterPopupComponent implements OnInit {
   constructor(
     private service : AppService,
     private builder : FormBuilder,
-    private datePipe : DatePipe,
     private toastr:ToastrService
   ) {  }
 

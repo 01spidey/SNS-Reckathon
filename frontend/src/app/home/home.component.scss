@@ -29,7 +29,8 @@ header{
         display: flex;
         flex-direction: column;
         flex: 1;
-        color: #35363a;
+        color:white;
+        font-family: 'Poppins';
     }
 
     #img{
@@ -41,13 +42,16 @@ header{
 section{
     height: 100vh;
     width: 100%;
+    background-image: url('../../assets/home-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    
 }
 
 #welcome{
-    background-image: url('../../assets/home-bg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
-    opacity: 0.7;
+    opacity: 0.4;
 
     display: flex;
     flex-direction: column;
@@ -135,6 +139,7 @@ section{
                 align-items: center;
                 justify-content: center;
                 transition: 0.5s ease;
+                background-color: white;
     
                 &:hover{
                     border: none;

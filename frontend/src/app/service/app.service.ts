@@ -27,5 +27,9 @@ export class AppService {
     return this.http.get<loginResponse>(`${this.URL}/login`, {params:data})
   }
 
+  getJobs(data:any){
+    return this.http.get<serverResponse>(`${this.URL}/get_jobs`, {params:data})
+  }
+
 
 }
